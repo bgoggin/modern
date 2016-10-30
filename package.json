@@ -1,0 +1,14 @@
+{
+  "name": "modern",
+  "version": "1.0.0",
+  "description": "sample modern javascript app",
+  "main": "index.js",
+  "author": "Bill Goggin",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "color": "^0.11.3"
+  }
+}
