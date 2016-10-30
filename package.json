@@ -6,7 +6,7 @@
   "author": "Bill Goggin",
   "license": "MIT",
   "scripts": {
-    "start": "node ."
+    "start": "gulp"
   },
   "dependencies": {},
   "devDependencies": {
