@@ -15,6 +15,7 @@ const paths = {
   webpackFile: 'webpack.config.babel.js',
   libDir: 'lib',
   distDir: 'dist',
+  clientBundle: 'dist/client-bundle.js?(.map)',
 };
 
 gulp.task('lint', () =>
@@ -28,7 +29,10 @@ gulp.task('lint', () =>
     .pipe(eslint.failAfterError())
 );
 
-gulp.task('clean', () => del(paths.libDir));
+gulp.task('clean', () => del([
+  paths.libDir,
+  paths.clientBundle,
+]));
 
 gulp.task('build', ['lint', 'clean'], () =>
   gulp.src(paths.allSrcJs)
@@ -38,9 +42,8 @@ gulp.task('build', ['lint', 'clean'], () =>
 
 gulp.task('main', ['lint', 'clean'], () =>
   gulp.src(paths.clientEntryPoint)
-    .pipe(webpack((webpackConfig))
-    .pipe(gulp.dest(paths.distDir))
-  )
+     .pipe(webpack(webpackConfig))
+     .pipe(gulp.dest(paths.distDir))
 );
 
 gulp.task('watch', () => {
